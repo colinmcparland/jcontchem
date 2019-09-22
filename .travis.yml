@@ -7,5 +7,5 @@ after_success:
   - ssh-add ./deploy-key
   - yarn build
   - ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@jcontchem.com 'cd prod; rm -rf *; pm2 stop all;'
-  - scp -R build root@jcontchem.com:/root/prod
-  - ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@jcontchem.com 'cd prod; pm2 serve;'
+  - scp -r build root@jcontchem.com:/root/prod
+  - ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@jcontchem.com 'cd prod/build; pm2 serve --port=80 --spa;'
