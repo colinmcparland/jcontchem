@@ -1,11 +1,11 @@
 language: node_js
 node_js:
- - 10
+  - 10
 after_success:
   - eval "$(ssh-agent -s)"
   - chmod 600 deploy-key
   - ssh-add ./deploy-key
-  - ssh root@jcontchem.com
+  - ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@jcontchem.com
   - cd prod
   - git pull
   - yarn build
