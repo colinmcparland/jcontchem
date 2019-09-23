@@ -7,13 +7,18 @@ branches:
   only:
     - master
 
+before_install:
+  - openssl aes-256-cbc -K $encrypted_2300fe280467_key -iv $encrypted_2300fe280467_iv
+    -in deploykey.enc -out deploykey -d
+
 jobs:
-  - include:
-      - stage: test
-        script: npm run test
-      - stage: build
-        script: npm run build
-after_success:
+  include:
+    - stage: test
+      script: npm run test
+    - stage: build
+      script: npm run build
+
+after success:
   - eval "$(ssh-agent -s)"
   - chmod 600 deploykey
   - ssh-add ./deploykey
@@ -23,6 +28,3 @@ after_success:
   - scp -i ./deploykey -o StrictHostKeyChecking=no -r build root@jcontchem.com:/root/prod
   - ssh -i ./deploykey -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@jcontchem.com
     'cd prod/build; pm2 serve --port=80 --spa;'
-before_install:
-  - openssl aes-256-cbc -K $encrypted_2300fe280467_key -iv $encrypted_2300fe280467_iv
-    -in deploykey.enc -out deploykey -d
