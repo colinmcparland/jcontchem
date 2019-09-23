@@ -3,12 +3,12 @@ node_js:
   - 10
 branches:
   only:
-  - master
+    - master
 jobs:
   - include:
       - stage: Tests and Build
         script: npm run test
-        script: npm run build
+      - script: npm run build
 after_success:
   - eval "$(ssh-agent -s)"
   - chmod 600 deploykey
