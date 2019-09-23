@@ -6,6 +6,11 @@ after_success:
   - chmod 600 deploy-key
   - ssh-add ./deploy-key
   - yarn build
-  - ssh -i ./deploy-key -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@jcontchem.com 'cd prod; rm -rf *; pm2 stop all;'
+  - ssh -i ./deploy-key -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@jcontchem.com
+    'cd prod; rm -rf *; pm2 stop all;'
   - scp -i ./deploy-key -o StrictHostKeyChecking=no -r build root@jcontchem.com:/root/prod
-  - ssh -i ./deploy-key -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@jcontchem.com 'cd prod/build; pm2 serve --port=80 --spa;'
+  - ssh -i ./deploy-key -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@jcontchem.com
+    'cd prod/build; pm2 serve --port=80 --spa;'
+before_install:
+  - openssl aes-256-cbc -K $encrypted_2300fe280467_key -iv $encrypted_2300fe280467_iv
+    -in deploy-key.enc -out deploy-key -d
