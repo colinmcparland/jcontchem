@@ -17,7 +17,7 @@ jobs:
       script: npm run test
       script: npm run build
 
-after success:
+after_success:
   - eval "$(ssh-agent -s)"
   - chmod 600 deploykey
   - ssh-add ./deploykey
