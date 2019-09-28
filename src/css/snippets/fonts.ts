@@ -21,8 +21,12 @@ export const h6FontSize = css`
 export const bodyFontSize = css`
   font-size: 14px;
 `;
+export const smallFontSize = css`
+  font-size: 11px;
+`;
 export const baskerville = css`
   font-family: "Libre Baskerville", serif;
+  font-weight: 300;
 `;
 export const baskervilleBold = css`
   font-family: "Libre Baskerville", serif;

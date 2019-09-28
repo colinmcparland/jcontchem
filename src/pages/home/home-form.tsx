@@ -1,0 +1,139 @@
+import React, { FC } from "react";
+import { Formik } from "formik";
+import styled from "styled-components";
+import { grey, darkBlue, white } from "../../css/snippets/colors";
+import {
+  h4FontSize,
+  h6FontSize,
+  montserrat,
+  montserratBold,
+  montserratLight,
+  smallFontSize
+} from "../../css/snippets/fonts";
+import { ReactComponent as Loading } from "../../media/images/loading.svg";
+
+const FormContainer = styled.div`
+  padding: 25px;
+  margin-top: 50px;
+  background-color: ${grey};
+  border-radius: 3px;
+  ${montserratBold}
+`;
+
+const Form = styled.form`
+  display: grid;
+  grid-row-gap: 15px;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  border: none;
+  background-color: ${white};
+  padding: 5px;
+  ${montserrat}
+`;
+
+const FormTitle = styled.div`
+  ${h6FontSize};
+  color: ${darkBlue};
+`;
+
+const Submit = styled.button`
+  padding: 12px;
+  color: ${white};
+  background-color: ${darkBlue};
+  ${montserratLight}
+  justify-self: flex-start;
+`;
+
+const Label = styled.label`
+  ${smallFontSize}
+  ${montserratLight}
+`;
+
+const Error = styled.div`
+  ${smallFontSize}
+  ${montserratLight}
+    color: red;
+`;
+
+export const HomeForm: FC = props => (
+  <FormContainer>
+    <Formik
+      initialValues={{ name: "", email: "" }}
+      validate={values => {
+        let errors = {
+          email: "",
+          name: ""
+        };
+        if (!values.email) {
+          errors.email = "Required";
+        } else if (
+          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+        ) {
+          errors.email = "Invalid email address";
+        }
+
+        if (!values.name) {
+          errors.name = "Required";
+        }
+        return errors;
+      }}
+      onSubmit={(values, { setSubmitting }) => {
+        console.log("hi");
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
+        }, 400);
+      }}
+    >
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        isSubmitting
+        /* and other goodies */
+      }) => (
+        <Form onSubmit={handleSubmit}>
+          <FormTitle>Contribute to JContChem</FormTitle>
+          {!isSubmitting && (
+            <>
+              <div>
+                <Label>Your Name:</Label>
+                <Input
+                  name="name"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.name}
+                />
+                {errors.name && touched.name && <Error>{errors.name}</Error>}
+              </div>
+              <div>
+                <Label>Email:</Label>
+                <Input
+                  type="email"
+                  name="email"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
+                />
+                {errors.email && touched.email && <Error>{errors.email}</Error>}
+              </div>
+              <Submit
+                type="submit"
+                disabled={isSubmitting}
+                onSubmit={() => handleSubmit}
+              >
+                Submit
+              </Submit>
+            </>
+          )}
+          {isSubmitting && <Loading />}
+        </Form>
+      )}
+    </Formik>
+  </FormContainer>
+);
