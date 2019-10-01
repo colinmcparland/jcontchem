@@ -3,7 +3,6 @@ import { Formik } from "formik";
 import styled from "styled-components";
 import { grey, darkBlue, white } from "../../css/snippets/colors";
 import {
-  h4FontSize,
   h6FontSize,
   montserrat,
   montserratBold,

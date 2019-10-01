@@ -1,5 +1,3 @@
-import { css } from "styled-components";
-
 export const blue = "#006989";
 
 export const darkBlue = "#031927";

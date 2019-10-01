@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Logo from "../../media/images/jcontchem_logo.png";
 import { Link } from "react-router-dom";
 import {
-  h1FontSize,
   baskerville,
   h2FontSize,
   h6FontSize,

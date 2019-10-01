@@ -5,7 +5,6 @@ import { About } from "./pages/about/about";
 import { createBrowserHistory } from "history";
 import { Header } from "./common/header/header";
 import styled from "styled-components";
-import { white } from "./css/snippets/colors";
 
 const PageContent = styled.div`
   padding: 50px;
