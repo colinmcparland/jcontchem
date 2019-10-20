@@ -72,6 +72,5 @@ export const Header: FC<HeaderProps> = props => (
         <StyledLink to="/submit">Contribute</StyledLink>
       </CTA>
     </MenuContainer>
-    <PageTitle>{props.pageTitle}</PageTitle>
   </HeaderContainer>
 );

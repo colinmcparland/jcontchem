@@ -10,6 +10,7 @@ import {
   smallFontSize
 } from "../../css/snippets/fonts";
 import { ReactComponent as Loading } from "../../media/images/loading.svg";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const FormContainer = styled.div`
   padding: 25px;
@@ -59,12 +60,9 @@ const Error = styled.div`
 export const HomeForm: FC = props => (
   <FormContainer>
     <Formik
-      initialValues={{ name: "", email: "" }}
+      initialValues={{ name: "", email: "", recaptcha: "" }}
       validate={values => {
-        let errors = {
-          email: "",
-          name: ""
-        };
+        let errors: { name?: string; email?: string; recaptcha?: string } = {};
         if (!values.email) {
           errors.email = "Required";
         } else if (
@@ -76,13 +74,20 @@ export const HomeForm: FC = props => (
         if (!values.name) {
           errors.name = "Required";
         }
+
+        if (!values.recaptcha) {
+          errors.recaptcha = "Please complete the security challenge.";
+        }
         return errors;
       }}
-      onSubmit={(values, { setSubmitting }) => {
-        console.log("hi");
+      onSubmit={(values, { setSubmitting, setStatus }) => {
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
           setSubmitting(false);
+          setStatus({
+            success:
+              "Thanks for your interest, we will contact you ASAP regarding submissions."
+          });
         }, 400);
       }}
     >
@@ -93,46 +98,56 @@ export const HomeForm: FC = props => (
         handleChange,
         handleBlur,
         handleSubmit,
-        isSubmitting
-        /* and other goodies */
-      }) => (
-        <Form onSubmit={handleSubmit}>
-          <FormTitle>Contribute to JContChem</FormTitle>
-          {!isSubmitting && (
-            <>
-              <div>
-                <Label>Your Name:</Label>
-                <Input
-                  name="name"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.name}
+        isSubmitting,
+        setFieldValue,
+        status
+      }) =>
+        !status || !status.success ? (
+          <Form onSubmit={handleSubmit}>
+            <FormTitle>Contribute to JContChem</FormTitle>
+            {!isSubmitting && (
+              <>
+                <div>
+                  <Label>Your Name:</Label>
+                  <Input
+                    name="name"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.name}
+                  />
+                  {errors.name && touched.name && <Error>{errors.name}</Error>}
+                </div>
+                <div>
+                  <Label>Email:</Label>
+                  <Input
+                    type="email"
+                    name="email"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.email}
+                  />
+                  {errors.email && touched.email && (
+                    <Error>{errors.email}</Error>
+                  )}
+                </div>
+                <ReCAPTCHA
+                  sitekey="6LeUjb4UAAAAAB9MlX2VKW4iweA7UufwLK1630Y4"
+                  onChange={token => setFieldValue("recaptcha", token)}
                 />
-                {errors.name && touched.name && <Error>{errors.name}</Error>}
-              </div>
-              <div>
-                <Label>Email:</Label>
-                <Input
-                  type="email"
-                  name="email"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                />
-                {errors.email && touched.email && <Error>{errors.email}</Error>}
-              </div>
-              <Submit
-                type="submit"
-                disabled={isSubmitting}
-                onSubmit={() => handleSubmit}
-              >
-                Submit
-              </Submit>
-            </>
-          )}
-          {isSubmitting && <Loading />}
-        </Form>
-      )}
+                {errors.recaptcha && touched.recaptcha && (
+                  <Error>{errors.recaptcha}</Error>
+                )}
+                <Submit type="submit" disabled={isSubmitting}>
+                  Submit
+                </Submit>
+              </>
+            )}
+            {isSubmitting && <Loading />}
+          </Form>
+        ) : (
+          <p>{status.success}</p>
+        )
+      }
     </Formik>
   </FormContainer>
 );

@@ -63,33 +63,39 @@ export const Home: FC<any> = props => (
   <HomeContainer>
     <RecentArticles>
       <Title>Recent Articles</Title>
-      {new Array(3).fill(0).map(() => (
-        <Article>
-          <ArticleTitle>Sample Article</ArticleTitle>
-          <ArticleMeta>
-            <div>Written by&nbsp;</div>
-            <ArticleMetaItem>Hugh Jass</ArticleMetaItem>
-            <div>&nbsp;on&nbsp;</div>
-            <ArticleMetaItem>January 1, 1970</ArticleMetaItem>
-          </ArticleMeta>
-          <Paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-            tortor augue, rutrum eget turpis quis, condimentum interdum mi.
-            Integer ut augue et augue congue laoreet ac tempor orci. Nam iaculis
-            porttitor odio a sodales. Praesent sed feugiat massa. Interdum et
-            malesuada fames ac ante ipsum primis in faucibus.
-          </Paragraph>
-        </Article>
-      ))}
+      <Article>
+        <ArticleTitle>
+          Against Ring Walking In Catalyst Transfer Polymerization
+        </ArticleTitle>
+        <ArticleMeta>
+          <div>Written by&nbsp;</div>
+          <ArticleMetaItem>George McKeown</ArticleMetaItem>
+          <div>&nbsp;on&nbsp;</div>
+          <ArticleMetaItem>January 1, 2019</ArticleMetaItem>
+        </ArticleMeta>
+        <Paragraph>
+          The widely-accepted theory that catalyst transfer polymerization (CTP)
+          proceeds through an asso- ciative intermediate between M(0) catalysts
+          and the π-system of a conjugated polymer in order to give chain-growth
+          kinetics is flawed. Consensus on this theory has been established over
+          a number of years, allowing weaker and weaker studies to be accepted
+          as evidence of this phenomenon. In this paper I present an alternative
+          theory: that ring-walking is likely not real, certainly not impor-
+          tant, and has hindered the progress of CTP.
+        </Paragraph>
+      </Article>
     </RecentArticles>
     <About>
       <Title>About JContChem</Title>
       <Paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-        tortor augue, rutrum eget turpis quis, condimentum interdum mi. Integer
-        ut augue et augue congue laoreet ac tempor orci. Nam iaculis porttitor
-        odio a sodales. Praesent sed feugiat massa. Interdum et malesuada fames
-        ac ante ipsum primis in faucibus.
+        The Journal of Contrarian Chemistry is focused on challenging
+        established consensus across all fields of chemistry. In every field,
+        papers are published that are widely recognized in an unspoken manner as
+        being of poor quality and/or drawing incorrect conclusions. This creates
+        a situation where there is both a public and a private knowledge of any
+        given problem or system. We aim to bridge the gap between these two
+        spheres, lowering barriers to entry and saving researchers time by
+        providing them with information that is all signal and no noise.
       </Paragraph>
       <HomeForm />
     </About>
