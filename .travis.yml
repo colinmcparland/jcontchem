@@ -5,9 +5,8 @@ branches:
   only:
     - master
 before_install:
-  - openssl aes-256-cbc -K $encrypted_2300fe280467_key -iv $encrypted_2300fe280467_iv
-    -in deploykey.enc -out deploykey -d
-  - openssl aes-256-cbc -K $encrypted_2300fe280467_key -iv $encrypted_2300fe280467_iv -in recaptchasecret.enc -out recaptchasecret -d
+  - openssl aes-256-cbc -K $encrypted_2300fe280467_key -iv $encrypted_2300fe280467_iv -in secrets.tar.enc -out secrets.tar -d
+  - tar xvf secrets.tar
 jobs:
   include:
     - stage: test and build

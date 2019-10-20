@@ -3,3 +3,4 @@ node_modules
 deploykey
 recaptchasecret
 build
+secrets.tar
