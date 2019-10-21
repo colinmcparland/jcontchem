@@ -9,7 +9,7 @@ try {
   recaptcha_secret = "REPLACE_ME_WITH_RECAPTHCA_SECRET";
 }
 
-app.get("/mail", async (req, res) => {
+app.post("/mail", async (req, res) => {
   // Verify google token
   // const verify_token = await fetch(
   //   "https://www.google.com/recaptcha/api/siteverify",
