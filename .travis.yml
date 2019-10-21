@@ -22,8 +22,8 @@ after_success:
   - ssh -i ./deploykey -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@jcontchem.com
     'pm2 stop all; cd prod; rm -rf *;'
   # Replace recap secret placeholder with proper key
-  - sed -i 's/REPLACE_ME_WITH_RECAPTHCA_SECRET/$(cat recaptchasecret)/g' server/index.js
+  - sed -i "s/REPLACE_ME_WITH_RECAPTHCA_SECRET/$(cat recaptchasecret)/g" server/index.js
   # Upload repo, serve build and server
   - scp -i ./deploykey -o StrictHostKeyChecking=no -r server build root@jcontchem.com:/root/prod
   - ssh -i ./deploykey -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@jcontchem.com
-    'cd prod; pm2 serve build --port=80 --spa; cd server; npm link express; pm2 start server/index.js'
+    'cd prod; pm2 serve build --port=80 --spa --name=frontend; cd server; npm install express; pm2 start server/index.js --name=api'
