@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const bodyPArser = require("body-parser");
+const bodyParser = require("body-parser");
 let recaptcha_secret;
 
 app.use(cors());
