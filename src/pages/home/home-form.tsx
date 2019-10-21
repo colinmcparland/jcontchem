@@ -81,7 +81,7 @@ export const HomeForm: FC = props => (
         return errors;
       }}
       onSubmit={async (values, { setSubmitting, setStatus }) => {
-        const resp = await fetch("http://jcontchem.com:5000", {
+        const resp = await fetch("http://jcontchem.com:5000/mail", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
