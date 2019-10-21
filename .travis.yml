@@ -26,4 +26,4 @@ after_success:
   # Upload repo, serve build and server
   - scp -i ./deploykey -o StrictHostKeyChecking=no -r server build root@jcontchem.com:/root/prod
   - ssh -i ./deploykey -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@jcontchem.com
-    'cd prod; pm2 serve build --port=80 --spa; pm2 start server/index.js'
+    'cd prod; pm2 serve build --port=80 --spa; cd server; npm link express; pm2 start server/index.js'
