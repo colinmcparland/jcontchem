@@ -16,18 +16,20 @@ try {
 
 app.post("/mail", async (req, res) => {
   // Verify google token
-  // const verify_token = await fetch(
-  //   "https://www.google.com/recaptcha/api/siteverify",
-  //   {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       secret: recaptcha_secret,
-  //       response: req.body.response
-  //     })
-  //   }
-  // );
+  const tokenQuery = await fetch(
+    "https://www.google.com/recaptcha/api/siteverify",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        secret: recaptcha_secret,
+        response: req.body.req.body.recaptcha
+      })
+    }
+  );
 
-  res.send(req.body);
+  const tokenData = await tokenQuery.json();
+
+  resp.send(tokenData);
 
   // Send email using gmail-send
 });
