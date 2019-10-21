@@ -33,5 +33,5 @@ after_success:
     pm2 serve build --port=80 --spa --name=frontend;
     cd server;
     npm init -y;
-    npm install express cors;
+    npm install express cors body-parser;
     pm2 start index.js --name=api'

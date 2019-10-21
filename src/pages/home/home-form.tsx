@@ -88,7 +88,7 @@ export const HomeForm: FC = props => (
           },
           body: JSON.stringify(values)
         });
-        const body = await resp.body.json();
+        const body = await resp.json();
         setSubmitting(false);
         setStatus({
           success:
