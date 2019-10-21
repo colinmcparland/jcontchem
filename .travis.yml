@@ -22,9 +22,9 @@ after_success:
   - ssh -i ./deploykey -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@jcontchem.com
     'pm2 stop all; cd prod; rm -rf *;'
   # Replace recap secret placeholder with proper key
-  - sed 's/REPLACE_ME_WITH_RECAPTCHA_SECRET/$(cat recaptchasecret)/g' server/index.js
+  - sed -i 's/REPLACE_ME_WITH_RECAPTHCA_SECRET/$(cat recaptchasecret)/g' server/index.js
   # Upload repo, serve build and server
   - ls
-  # - scp -i ./deploykey -o StrictHostKeyChecking=no -r ./* root@jcontchem.com:/root/prod
+  - scp -i ./deploykey -o StrictHostKeyChecking=no -r ./* root@jcontchem.com:/root/prod
   # - ssh -i ./deploykey -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@jcontchem.com
   #   'cd prod; npm install; cd build; pm2 serve --port=80 --spa; cd ../server; pm2 serve --port=5000'
