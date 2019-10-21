@@ -20,13 +20,15 @@ after_success:
   - npm run build
   # Replace recap secret placeholder with proper key
   - sed -i "s/REPLACE_ME_WITH_RECAPTHCA_SECRET/$(cat recaptchasecret)/g" server/index.js
+  # Initial cleanup, delete old files
+  - ssh -i ./deploykey -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@jcontchem.com
+    'cd prod;
+    rm -rf *;'
   # Upload server and FE
   - scp -i ./deploykey -o StrictHostKeyChecking=no -r server build root@jcontchem.com:/root/prod
   # Cleanup, serve FE, start server
   - ssh -i ./deploykey -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@jcontchem.com
     'pm2 delete all;
-    cd prod;
-    rm -rf *;
     pm2 serve build --port=80 --spa --name=frontend;
     cd server;
     npm init -y;
