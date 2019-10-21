@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const http = require("http");
+const cors = require("cors");
 let recaptcha_secret;
 
 try {
@@ -9,7 +9,7 @@ try {
   recaptcha_secret = "REPLACE_ME_WITH_RECAPTHCA_SECRET";
 }
 
-app.post("/mail", async (req, res) => {
+app.post("/mail", cors(), async (req, res) => {
   // Verify google token
   // const verify_token = await fetch(
   //   "https://www.google.com/recaptcha/api/siteverify",
