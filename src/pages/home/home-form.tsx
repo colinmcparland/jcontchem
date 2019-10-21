@@ -80,15 +80,20 @@ export const HomeForm: FC = props => (
         }
         return errors;
       }}
-      onSubmit={(values, { setSubmitting, setStatus }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-          setStatus({
-            success:
-              "Thanks for your interest, we will contact you ASAP regarding submissions."
-          });
-        }, 400);
+      onSubmit={async (values, { setSubmitting, setStatus }) => {
+        const resp = await fetch(`${location.origin}:5000`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(values)
+        });
+        setSubmitting(false);
+        setStatus({
+          success:
+            "Thanks for your interest, we will contact you ASAP regarding submissions."
+        });
+        console.log(resp);
       }}
     >
       {({

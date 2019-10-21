@@ -21,7 +21,8 @@ app.get("/mail", async (req, res) => {
   //     })
   //   }
   // );
-  res.send("yo");
+
+  res.send(req.body);
 
   // Send email using gmail-send
 });
