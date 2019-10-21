@@ -88,12 +88,13 @@ export const HomeForm: FC = props => (
           },
           body: JSON.stringify(values)
         });
+        const body = await resp.json();
         setSubmitting(false);
         setStatus({
           success:
             "Thanks for your interest, we will contact you ASAP regarding submissions."
         });
-        console.log(resp);
+        console.log(body);
       }}
     >
       {({
