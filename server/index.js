@@ -33,13 +33,6 @@ app.post("/mail", async (req, res) => {
     }
   );
 
-  console.log(
-    JSON.stringify({
-      secret: recaptcha_secret,
-      response: req.body.recaptcha
-    })
-  );
-
   const tokenData = await tokenQuery.json();
 
   res.send(tokenData);
