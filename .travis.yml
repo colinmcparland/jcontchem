@@ -9,6 +9,8 @@ before_install:
   - tar xvf secrets.tar
 jobs:
   include:
+    - stage: lint
+      script: ./node_modules/.bin/eslint server/index.js
     - stage: test and build
       script: npm run build
 after_success:
@@ -33,5 +35,5 @@ after_success:
     pm2 serve build --port=80 --spa --name=frontend;
     cd server;
     npm init -y;
-    npm install express cors body-parser node-fetch;
+    npm install express cors body-parser node-fetch form-urlencoded;
     pm2 start index.js --name=api'
