@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
+import formurlencoded from "form-urlencoded";
 let recaptcha_secret;
 
 app.use(cors());
@@ -24,7 +25,7 @@ app.post("/mail", async (req, res) => {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      body: JSON.stringify({
+      body: formurlencoded({
         secret: recaptcha_secret,
         response: req.body.recaptcha
       })
