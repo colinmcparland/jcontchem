@@ -11,8 +11,9 @@ jobs:
   include:
     - stage: lint
       script: ./node_modules/.bin/eslint server/index.js
-    - stage: test and build
+    - stage: build
       script: npm run build
+  stages:
 after_success:
   # Setup SSH key
   - eval "$(ssh-agent -s)"
