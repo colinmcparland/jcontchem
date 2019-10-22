@@ -23,7 +23,7 @@ app.post("/mail", async (req, res) => {
       method: "POST",
       body: JSON.stringify({
         secret: recaptcha_secret,
-        response: req.body.req.body.recaptcha
+        response: req.body.recaptcha
       })
     }
   );
