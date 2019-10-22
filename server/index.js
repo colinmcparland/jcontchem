@@ -25,7 +25,7 @@ app.post("/mail", async (req, res) => {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      body: formurlencoded({
+      body: formurlencoded.formurlencoded({
         secret: recaptcha_secret,
         response: req.body.recaptcha
       })
