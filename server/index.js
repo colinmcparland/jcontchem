@@ -30,7 +30,7 @@ app.post("/mail", async (req, res) => {
 
   const tokenData = await tokenQuery.json();
 
-  resp.send(tokenData);
+  res.send(tokenData);
 
   // Send email using gmail-send
 });
