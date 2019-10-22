@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
-import formurlencoded from "form-urlencoded";
+const formurlencoded = require("form-urlencoded");
 let recaptcha_secret;
 
 app.use(cors());
