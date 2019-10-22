@@ -21,6 +21,9 @@ app.post("/mail", async (req, res) => {
     "https://www.google.com/recaptcha/api/siteverify",
     {
       method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
       body: JSON.stringify({
         secret: recaptcha_secret,
         response: req.body.recaptcha
