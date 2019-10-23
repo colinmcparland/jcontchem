@@ -4,3 +4,4 @@ deploykey
 recaptchasecret
 build
 secrets.tar
+server/dist
