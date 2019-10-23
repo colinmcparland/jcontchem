@@ -48,7 +48,7 @@ app.post("/mail", async (req, res) => {
         text: `${req.body.name} has sent a submission request.  Their email is ${req.body.email}.  You should get back to them and see what they want.`
       });
 
-      res.status(200).send();
+      res.status(200).send(0);
     } catch (err) {
       console.log(err);
       res.status(500).send();
