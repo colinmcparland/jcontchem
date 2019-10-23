@@ -27,7 +27,7 @@ after_success:
     rm -rf *;'
   # Upload server and FE
   - scp -i ./deploykey -o StrictHostKeyChecking=no -r build root@jcontchem.com:/root/prod
-  - scp -i ./deploykey -o StrictHostKeyChecking=no -r server/dist/index.js root@jcontchem.com:/root/prod/server/
+  - scp -i ./deploykey -o StrictHostKeyChecking=no server/dist/index.js root@jcontchem.com:/root/prod
   # Cleanup, serve FE, start server
   - ssh -i ./deploykey -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@jcontchem.com
     'pm2 delete all;
