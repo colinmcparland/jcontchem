@@ -44,7 +44,7 @@ app.post("/mail", async (req, res) => {
     });
 
     try {
-      const { result, full } = await send({
+      await send({
         text: `${req.body.name} has sent a submission request.  Their email is ${req.body.email}.  You should get back to them and see what they want.`
       });
 
