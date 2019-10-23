@@ -90,7 +90,7 @@ export const HomeForm: FC = props => (
         });
 
         try {
-          const body = await resp.json();
+          await resp.json();
           setSubmitting(false);
           setStatus({
             success:
@@ -156,7 +156,7 @@ export const HomeForm: FC = props => (
                 </Submit>
               </>
             )}
-            {isSubmitting && <Loading />}
+            {isSubmitting && <Loading style={{ filter: "invert(100%)" }} />}
           </Form>
         ) : (
           <p>{status.success}</p>
