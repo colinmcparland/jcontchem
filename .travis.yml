@@ -38,4 +38,4 @@ after_success:
     cd server;
     npm init -y;
     npm install express cors body-parser node-fetch form-urlencoded;
-    pm2 start index.js --name=api'
+    pm2 start dist/index.js --name=api'
