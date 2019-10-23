@@ -1,4 +1,4 @@
-import { formurlencoded } from "form-urlencoded";
+import formurlencoded from "form-urlencoded";
 const express = require("express");
 const app = express();
 const cors = require("cors");
