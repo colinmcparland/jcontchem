@@ -94,6 +94,7 @@ export const HomeForm: FC = props => (
           success:
             "Thanks for your interest, we will contact you ASAP regarding submissions."
         });
+
         console.log(body);
       }}
     >

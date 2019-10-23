@@ -5,3 +5,4 @@ recaptchasecret
 build
 secrets.tar
 server/dist
+gmailpassword

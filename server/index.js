@@ -35,9 +35,27 @@ app.post("/mail", async (req, res) => {
 
   const tokenData = await tokenQuery.json();
 
-  res.send(tokenData);
+  if (tokenData.success) {
+    const send = require("gmail-send")({
+      user: "submissions@jcontchem.com",
+      pass: "REPLACE_ME_WITH_GMAIL_PASSWORD",
+      to: "submissions@jcontchem.com",
+      subject: `New submission inquiry from ${req.body.name}`
+    });
 
-  // Send email using gmail-send
+    try {
+      const { result, full } = await send({
+        text: `${req.body.name} has sent a submission request.  Their email is ${req.body.email}.  You should get back to them and see what they want.`
+      });
+
+      req.status(200).send();
+    } catch (err) {
+      console.log(err);
+      req.status(500).send();
+    }
+  } else {
+    res.status(403).send();
+  }
 });
 
 app.listen(5000, () => console.log(`Jcontchem api listening on port 5000!`));

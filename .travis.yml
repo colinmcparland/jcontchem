@@ -21,6 +21,8 @@ after_success:
   - npm run build
   # Replace recap secret placeholder with proper key
   - sed -i "s/REPLACE_ME_WITH_RECAPTHCA_SECRET/$(cat recaptchasecret)/g" server/index.js
+  # Add gmail password to send script
+  - sed -i "s/REPLACE_ME_WITH_GMAIL_PASSWORD/$(cat gmailpassword)/g" server/index.js
   # Build server
   - npm run buildserver
   # Initial cleanup, delete old files
@@ -37,5 +39,5 @@ after_success:
     pm2 serve build --port=80 --spa --name=frontend;
     cd server;
     npm init -y;
-    npm install express cors body-parser node-fetch form-urlencoded;
+    npm install express cors body-parser node-fetch form-urlencoded gmail-send;
     pm2 start dist/index.js --name=api'
