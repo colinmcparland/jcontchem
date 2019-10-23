@@ -88,14 +88,21 @@ export const HomeForm: FC = props => (
           },
           body: JSON.stringify(values)
         });
-        const body = await resp.json();
-        setSubmitting(false);
-        setStatus({
-          success:
-            "Thanks for your interest, we will contact you ASAP regarding submissions."
-        });
 
-        console.log(body);
+        try {
+          const body = await resp.json();
+          setSubmitting(false);
+          setStatus({
+            success:
+              "Thanks for your interest, we will contact you ASAP regarding submissions."
+          });
+        } catch (err) {
+          setSubmitting(false);
+          setStatus({
+            success:
+              "There was an error sending your inquiry.  Please reload the page and try again."
+          });
+        }
       }}
     >
       {({
