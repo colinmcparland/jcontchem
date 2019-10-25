@@ -69,9 +69,11 @@ export const Home: FC<any> = props => (
         </ArticleTitle>
         <ArticleMeta>
           <div>Written by&nbsp;</div>
-          <ArticleMetaItem>George McKeown</ArticleMetaItem>
+          <ArticleMetaItem>
+            C7F8BF99D8658781C25A3F387591A44ECDA05D37
+          </ArticleMetaItem>
           <div>&nbsp;on&nbsp;</div>
-          <ArticleMetaItem>January 1, 2019</ArticleMetaItem>
+          <ArticleMetaItem>September 15, 2019</ArticleMetaItem>
         </ArticleMeta>
         <Paragraph>
           The widely-accepted theory that catalyst transfer polymerization (CTP)

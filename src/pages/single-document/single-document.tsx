@@ -1,0 +1,27 @@
+import React, { FC, useState } from "react";
+import { Document, Page } from "react-pdf";
+
+interface SingleDocumentProps {
+  name?: string;
+}
+
+export const SingleDocument: FC<SingleDocumentProps> = props => {
+  const [currentNumPages, setCurrentNumPages] = useState<number>(0);
+  const [currentPage, _] = useState<number>(0);
+
+  return (
+    <div>
+      <Document
+        file="somefile.pdf"
+        onLoadSuccess={(data: { numPages: number }) =>
+          setCurrentNumPages(data.numPages)
+        }
+      >
+        <Page pageNumber={currentPage} />
+      </Document>
+      <p>
+        Page {currentPage} of {currentNumPages}
+      </p>
+    </div>
+  );
+};
