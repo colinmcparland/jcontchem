@@ -14,7 +14,7 @@ export const SingleDocument: FC<SingleDocumentProps> = props => {
   return (
     <div>
       <Document
-        file={`../../../../uploads/${docName}`}
+        file={`../../docs/${docName}`}
         onLoadSuccess={(data: { numPages: number }) =>
           setCurrentNumPages(data.numPages)
         }
