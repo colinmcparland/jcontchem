@@ -1,18 +1,20 @@
 import React, { FC, useState } from "react";
 import { Document, Page } from "react-pdf";
+import { RouteComponentProps } from "react-router";
 
-interface SingleDocumentProps {
+interface SingleDocumentProps extends Partial<RouteComponentProps> {
   name?: string;
 }
 
 export const SingleDocument: FC<SingleDocumentProps> = props => {
   const [currentNumPages, setCurrentNumPages] = useState<number>(0);
   const [currentPage, _] = useState<number>(0);
+  const docName = props.match ? props.match.params : '';
 
   return (
     <div>
       <Document
-        file="somefile.pdf"
+        file={`../../../../uploads/${docName}`}
         onLoadSuccess={(data: { numPages: number }) =>
           setCurrentNumPages(data.numPages)
         }
