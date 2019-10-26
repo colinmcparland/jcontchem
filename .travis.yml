@@ -35,9 +35,7 @@ after_success:
   # Cleanup, serve FE, start server
   - ssh -i ./deploykey -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@jcontchem.com
     'pm2 delete all;
-    cd prod;
-    pm2 serve build --port=80 --spa --name=frontend;
-    cd server;
+    cd prod/server;
     npm init -y;
     npm install express cors body-parser node-fetch form-urlencoded gmail-send;
     pm2 start dist/index.js --name=api'

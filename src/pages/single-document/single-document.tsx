@@ -14,7 +14,7 @@ export const SingleDocument: FC<SingleDocumentProps> = props => {
   return (
     <div>
       <Document
-        file={`../../docs/${docName}`}
+        file={'http://admin.jcontchem.com/wp-content/uploads/2019/10/ctp.pdf'}
         onLoadSuccess={(data: { numPages: number }) =>
           setCurrentNumPages(data.numPages)
         }
