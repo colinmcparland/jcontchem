@@ -5,6 +5,7 @@ import { About } from "./pages/about/about";
 import { createBrowserHistory } from "history";
 import { Header } from "./common/header/header";
 import styled from "styled-components";
+import { SingleDocument } from "./pages/single-document/single-document";
 
 const PageContent = styled.div`
   padding: 50px;
@@ -26,7 +27,7 @@ const App: FC = () => (
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/about" exact component={About} />
-          <Route path="/document/:name" exact component={About} />
+          <Route path="/document/:name" exact component={SingleDocument} />
         </Switch>
       </PageContent>
     </Router>
