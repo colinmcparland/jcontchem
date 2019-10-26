@@ -1,9 +1,0 @@
-{
-  "extends": ["tslint-plugin-prettier"],
-  "linterOptions": {
-    "exclude": [".history"]
-  },
-  "rules": {
-    "prettier": true
-  }
-}

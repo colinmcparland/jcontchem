@@ -59,7 +59,7 @@ const ArticleMetaItem = styled.div`
   color: ${blue};
 `;
 
-export const Home: FC<any> = props => (
+export const Home: FC = () => (
   <HomeContainer>
     <RecentArticles>
       <Title>Recent Articles</Title>

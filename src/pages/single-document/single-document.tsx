@@ -6,16 +6,16 @@ interface SingleDocumentProps extends Partial<RouteComponentProps> {
   name?: string;
 }
 
-export const SingleDocument: FC<SingleDocumentProps> = props => {
+export const SingleDocument: FC<SingleDocumentProps> = () => {
   const [currentNumPages, setCurrentNumPages] = useState<number>(0);
-  const [currentPage, _] = useState<number>(0);
-  const docName = props.match ? props.match.params : '';
+  const [currentPage] = useState<number>(0);
+  // const docName = props.match ? props.match.params : "";
 
   return (
     <div>
       <Document
-        file={'http://admin.jcontchem.com/wp-content/uploads/2019/10/ctp.pdf'}
-        onLoadSuccess={(data: { numPages: number }) =>
+        file={"http://admin.jcontchem.com/wp-content/uploads/2019/10/ctp.pdf"}
+        onLoadSuccess={(data: { numPages: number }): void =>
           setCurrentNumPages(data.numPages)
         }
       >

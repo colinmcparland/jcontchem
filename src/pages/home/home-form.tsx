@@ -11,6 +11,7 @@ import {
 } from "../../css/snippets/fonts";
 import { ReactComponent as Loading } from "../../media/images/loading.svg";
 import ReCAPTCHA from "react-google-recaptcha";
+import fetch from "node-fetch";
 
 const FormContainer = styled.div`
   padding: 25px;
@@ -57,12 +58,18 @@ const Error = styled.div`
     color: red;
 `;
 
-export const HomeForm: FC = props => (
+export const HomeForm: FC = () => (
   <FormContainer>
     <Formik
       initialValues={{ name: "", email: "", recaptcha: "" }}
-      validate={values => {
-        let errors: { name?: string; email?: string; recaptcha?: string } = {};
+      validate={(
+        values
+      ): { name?: string; email?: string; recaptcha?: string } => {
+        const errors: {
+          name?: string;
+          email?: string;
+          recaptcha?: string;
+        } = {};
         if (!values.email) {
           errors.email = "Required";
         } else if (
@@ -80,7 +87,7 @@ export const HomeForm: FC = props => (
         }
         return errors;
       }}
-      onSubmit={async (values, { setSubmitting, setStatus }) => {
+      onSubmit={async (values, { setSubmitting, setStatus }): Promise<void> => {
         const resp = await fetch("http://jcontchem.com:5000/mail", {
           method: "POST",
           headers: {
@@ -115,7 +122,7 @@ export const HomeForm: FC = props => (
         isSubmitting,
         setFieldValue,
         status
-      }) =>
+      }): JSX.Element =>
         !status || !status.success ? (
           <Form onSubmit={handleSubmit}>
             <FormTitle>Contribute to JContChem</FormTitle>
@@ -146,7 +153,7 @@ export const HomeForm: FC = props => (
                 </div>
                 <ReCAPTCHA
                   sitekey="6LeUjb4UAAAAAB9MlX2VKW4iweA7UufwLK1630Y4"
-                  onChange={token => setFieldValue("recaptcha", token)}
+                  onChange={(token): void => setFieldValue("recaptcha", token)}
                 />
                 {errors.recaptcha && touched.recaptcha && (
                   <Error>{errors.recaptcha}</Error>
