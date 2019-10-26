@@ -85,6 +85,13 @@ export const Home: FC = () => (
           theory: that ring-walking is likely not real, certainly not impor-
           tant, and has hindered the progress of CTP.
         </Paragraph>
+        <a
+          href="http://admin.jcontchem.com/wp-content/uploads/2019/10/ctp.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Paper
+        </a>
       </Article>
     </RecentArticles>
     <About>
