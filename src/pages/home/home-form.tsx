@@ -11,7 +11,7 @@ import {
 } from "../../css/snippets/fonts";
 import { ReactComponent as Loading } from "../../media/images/loading.svg";
 import ReCAPTCHA from "react-google-recaptcha";
-import fetch from "node-fetch";
+import fetch from "cross-fetch";
 
 const FormContainer = styled.div`
   padding: 25px;
