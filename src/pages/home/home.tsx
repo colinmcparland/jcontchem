@@ -13,13 +13,23 @@ import { HomeForm } from "./home-form";
 
 const HomeContainer = styled.div`
   display: grid;
-  grid-template-columns: 2fr 1fr;
+
   grid-column-gap: 50px;
+
+  @media only screen and (max-width: 1080px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media only screen and (min-width: 1080px) {
+    grid-template-columns: 2fr 1fr;
+  }
 `;
 
 const RecentArticles = styled.div`
-  border-right: 1px solid #efefef;
-  padding-right: 50px;
+  @media only screen and (min-width: 1080px) {
+    border-right: 1px solid #efefef;
+    padding-right: 50px;
+  }
 `;
 
 const About = styled.div``;
@@ -48,15 +58,28 @@ const ArticleTitle = styled.div`
 
 const ArticleMeta = styled.div`
   display: grid;
-  grid-auto-flow: column;
   justify-content: flex-start;
   ${smallFontSize}
   ${montserrat}
+
+  @media screen and (max-width: 1080px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media screen and (min-width: 1080px) {
+    grid-template-columns: unset;
+    grid-auto-flow: column;
+  }
 `;
 
 const ArticleMetaItem = styled.div`
   ${montserratBold}
   color: ${blue};
+`;
+
+const ViewPaperLink = styled.a`
+  color: ${blue};
+  ${montserratBold}
 `;
 
 export const Home: FC = () => (
@@ -85,13 +108,13 @@ export const Home: FC = () => (
           theory: that ring-walking is likely not real, certainly not impor-
           tant, and has hindered the progress of CTP.
         </Paragraph>
-        <a
+        <ViewPaperLink
           href="http://admin.jcontchem.com/wp-content/uploads/2019/10/ctp.pdf"
           target="_blank"
           rel="noopener noreferrer"
         >
-          View Paper
-        </a>
+          View Paper &rsaquo;
+        </ViewPaperLink>
       </Article>
     </RecentArticles>
     <About>

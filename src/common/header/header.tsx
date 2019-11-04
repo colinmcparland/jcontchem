@@ -8,7 +8,7 @@ import {
   h6FontSize,
   montserrat
 } from "../../css/snippets/fonts";
-import { blue, white, darkBlue } from "../../css/snippets/colors";
+import { blue, white } from "../../css/snippets/colors";
 /* 
 
     Start Styled Components
@@ -16,12 +16,22 @@ import { blue, white, darkBlue } from "../../css/snippets/colors";
 */
 export const HeaderContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: space-between;
   align-items: center;
-  padding: 25px 50px;
   ${baskerville}
   background-color: ${blue};
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    padding: 12px 25px;
+    justify-items: center;
+  }
+
+  @media screen and (min-width: 768px) {
+    justify-items: unset;
+    grid-template-columns: repeat(2, auto);
+    padding: 25px 50px;
+    justify-content: space-between;
+  }
 `;
 
 export const HeaderLogo = styled.img`
@@ -35,6 +45,10 @@ export const MenuContainer = styled.div`
   justify-content: flex-end;
   grid-column-gap: 25px;
   align-items: center;
+
+  @media screen and (max-width: 768px) {
+    padding-top: 25px;
+  }
 `;
 
 export const StyledLink = styled(Link)`
@@ -50,27 +64,28 @@ export const PageTitle = styled.div`
   text-transform: capitalize;
 `;
 
-const CTA = styled.div`
-  background-color: ${darkBlue};
-  padding: 12px;
-  border-radius: 3px;
-  color: ${white};
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-`;
+// const CTA = styled.div`
+//   background-color: ${darkBlue};
+//   padding: 12px;
+//   border-radius: 3px;
+//   color: ${white};
+//   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+// `;
 
 interface HeaderProps {
   pageTitle: string;
 }
 
-export const Header: FC<HeaderProps> = props => (
+export const Header: FC<HeaderProps> = () => (
   <HeaderContainer>
     <HeaderLogo src={Logo} />
     <MenuContainer>
       <StyledLink to="/">Home</StyledLink>
       <StyledLink to="/about">About</StyledLink>
-      <CTA>
+      <StyledLink to="/contribute">Contribute</StyledLink>
+      {/* <CTA>
         <StyledLink to="/submit">Contribute</StyledLink>
-      </CTA>
+      </CTA> */}
     </MenuContainer>
   </HeaderContainer>
 );

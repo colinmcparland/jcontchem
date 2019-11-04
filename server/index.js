@@ -40,12 +40,12 @@ app.post("/mail", async (req, res) => {
       user: "submissions@jcontchem.com",
       pass: "REPLACE_ME_WITH_GMAIL_PASSWORD",
       to: "submissions@jcontchem.com",
-      subject: `New submission inquiry from ${req.body.name}`
+      subject: `New contact message from ${req.body.name}`
     });
 
     try {
       await send({
-        text: `${req.body.name} has sent a submission request.  Their email is ${req.body.email}.  You should get back to them and see what they want.`
+        text: `Jcontchem has a new inquiry from ${req.body.name} (${req.body.email}):<br />${req.body.message}`
       });
 
       res.status(200).send(0);

@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Formik } from "formik";
 import styled from "styled-components";
-import { grey, darkBlue, white } from "../../css/snippets/colors";
+import { grey, darkBlue, white, blue } from "../../css/snippets/colors";
 import {
   h6FontSize,
   montserrat,
@@ -14,11 +14,18 @@ import ReCAPTCHA from "react-google-recaptcha";
 import fetch from "cross-fetch";
 
 const FormContainer = styled.div`
-  padding: 25px;
   margin-top: 50px;
   background-color: ${grey};
   border-radius: 3px;
   ${montserratBold}
+
+  @media screen and (max-width: 768px) {
+    padding: 12px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 25px;
+  }
 `;
 
 const Form = styled.form`
@@ -32,6 +39,17 @@ const Input = styled.input`
   background-color: ${white};
   padding: 5px;
   ${montserrat}
+  box-sizing: border-box;
+`;
+
+const TextArea = styled.textarea`
+  border: none;
+  background-color: ${white};
+  padding: 5px;
+  ${montserrat}
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
 `;
 
 const FormTitle = styled.div`
@@ -58,17 +76,32 @@ const Error = styled.div`
     color: red;
 `;
 
+const SmallLabel = styled.div`
+  font-size: 11px;
+  ${montserratLight}
+
+  a {
+    color: ${blue};
+  }
+`;
+
+interface ValuesProps {
+  name?: string;
+  email?: string;
+  recaptcha?: string;
+  message?: string;
+}
+
 export const HomeForm: FC = () => (
   <FormContainer>
     <Formik
-      initialValues={{ name: "", email: "", recaptcha: "" }}
-      validate={(
-        values
-      ): { name?: string; email?: string; recaptcha?: string } => {
+      initialValues={{ name: "", email: "", recaptcha: "", message: "" }}
+      validate={(values): ValuesProps => {
         const errors: {
           name?: string;
           email?: string;
           recaptcha?: string;
+          message?: string;
         } = {};
         if (!values.email) {
           errors.email = "Required";
@@ -84,6 +117,10 @@ export const HomeForm: FC = () => (
 
         if (!values.recaptcha) {
           errors.recaptcha = "Please complete the security challenge.";
+        }
+
+        if (!values.message) {
+          errors.recaptcha = "Please enter a message.";
         }
         return errors;
       }}
@@ -124,9 +161,16 @@ export const HomeForm: FC = () => (
       }): JSX.Element =>
         !status || !status.success ? (
           <Form onSubmit={handleSubmit}>
-            <FormTitle>Contribute to JContChem</FormTitle>
+            <FormTitle>Contact JContChem</FormTitle>
+
             {!isSubmitting && (
               <>
+                <SmallLabel>
+                  Please feel free to reach out with any questions about
+                  jcontchem, submissions or other inquiries. For details on
+                  contributing, please see the{" "}
+                  <a href="/contribute">contribute page.</a>
+                </SmallLabel>
                 <div>
                   <Label>Your Name:</Label>
                   <Input
@@ -150,10 +194,31 @@ export const HomeForm: FC = () => (
                     <Error>{errors.email}</Error>
                   )}
                 </div>
+                <div>
+                  <Label>Message:</Label>
+                  <TextArea
+                    rows={5}
+                    name="message"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.message}
+                  />
+                  {errors.message && touched.message && (
+                    <Error>{errors.message}</Error>
+                  )}
+                </div>
                 <ReCAPTCHA
                   sitekey="6LeUjb4UAAAAAB9MlX2VKW4iweA7UufwLK1630Y4"
                   onChange={(token): void => setFieldValue("recaptcha", token)}
                 />
+                <SmallLabel>
+                  <em>
+                    To reach us directly, please email{" "}
+                    <a href="mailto:submissions@jcontchem.com">
+                      submissions@jcontchem.com
+                    </a>
+                  </em>
+                </SmallLabel>
                 {errors.recaptcha && touched.recaptcha && (
                   <Error>{errors.recaptcha}</Error>
                 )}
