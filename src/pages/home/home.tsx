@@ -100,13 +100,13 @@ export const Home: FC = () => (
         </ArticleMeta>
         <Paragraph>
           The widely-accepted theory that catalyst transfer polymerization (CTP)
-          proceeds through an asso- ciative intermediate between M(0) catalysts
+          proceeds through an associative intermediate between M(0) catalysts
           and the π-system of a conjugated polymer in order to give chain-growth
           kinetics is flawed. Consensus on this theory has been established over
           a number of years, allowing weaker and weaker studies to be accepted
           as evidence of this phenomenon. In this paper I present an alternative
-          theory: that ring-walking is likely not real, certainly not impor-
-          tant, and has hindered the progress of CTP.
+          theory: that ring-walking is likely not real, certainly not important,
+          and has hindered the progress of CTP.
         </Paragraph>
         <ViewPaperLink
           href="http://admin.jcontchem.com/wp-content/uploads/2019/10/ctp.pdf"
