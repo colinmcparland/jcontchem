@@ -34,13 +34,6 @@ const StyledTable = styled.table`
     border-top: 1px solid #000;
   }
 `;
-
-const StyledCode = styled.pre`
-  background-color: #fff;
-  padding: 8px;
-  border-radius: 3px;
-  overflow: scroll;
-`;
 export const Contribute: FC = () => (
   <>
     <h1>Contributing</h1>
@@ -75,34 +68,10 @@ export const Contribute: FC = () => (
       provide us with the hash that replaces the author’s name.
     </StyledText>
     <h3>Generating SHA1 Keypair on Mac and Ubuntu Linux</h3>
-    <StyledText>Open your Terminal and enter:</StyledText>
-    <StyledCode>ssh-keygen -t rsa</StyledCode>
-    <StyledText>Then you should see:</StyledText>
-    <StyledCode>
-      Generating public/private rsa key pair. Enter file in which to save the
-      key (/home/demo/.ssh/id_rsa):
-    </StyledCode>
     <StyledText>
-      Now enter the location to save the key to. For example, to save the
-      keypair to your desktop under the name &quot;jcontchem&quot;, enter
-    </StyledText>
-    <StyledCode>~/Desktop/jcontchem</StyledCode>
-    <StyledText>Then you should see:</StyledText>
-    <StyledCode>Enter passphrase (empty for no passphrase):</StyledCode>
-    <StyledText>
-      Leave this blank. Then you should see something like this:
-    </StyledText>
-    <StyledCode>
-      Your identification has been saved in /home/demo/.ssh/id_rsa.
-      <br />
-      Your public key has been saved in /home/demo/.ssh/id_rsa.pub.
-      <br />
-      The key fingerprint is: ...
-    </StyledCode>
-    <StyledText>
-      Now you should see jcontchem and jcontchem.pub in the location you chose
-      earlier. In your submissions, please send us the .pub file and keep the
-      other one as your secret key.
+      <a href="https://passwordsgenerator.net/sha1-hash-generator/">
+        Generate your keypair here
+      </a>
     </StyledText>
     <h3>Submission and Editorial Process</h3>
     <StyledText>
