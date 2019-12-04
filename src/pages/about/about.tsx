@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { montserratLight } from "../../css/snippets/fonts";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 
 const StyledText = styled.p`
@@ -8,6 +9,10 @@ const StyledText = styled.p`
 
 export const About: FC = () => (
   <>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>Jcontchem - About</title>
+    </Helmet>
     <h1>About J. Cont. Chem.</h1>
     <StyledText>
       J. Cont. Chem is a journal focused on challenging established consensus

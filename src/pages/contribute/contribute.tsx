@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import { montserratLight, baskervilleBold } from "../../css/snippets/fonts";
+import { Helmet } from "react-helmet";
 
 const StyledText = styled.p`
   ${montserratLight}
@@ -36,6 +37,10 @@ const StyledTable = styled.table`
 `;
 export const Contribute: FC = () => (
   <>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>Jcontchem - Contribute</title>
+    </Helmet>
     <h1>Contributing</h1>
     <h3>Anonymous Authorship</h3>
     <StyledText>
@@ -66,12 +71,6 @@ export const Contribute: FC = () => (
       remain anonymous even to the journal itself, we will allow submissions
       from unaffiliated e-mail addresses. In these cases, we will ask authors to
       provide us with the hash that replaces the author’s name.
-    </StyledText>
-    <h3>Generating SHA1 Keypair on Mac and Ubuntu Linux</h3>
-    <StyledText>
-      <a href="https://passwordsgenerator.net/sha1-hash-generator/">
-        Generate your keypair here
-      </a>
     </StyledText>
     <h3>Submission and Editorial Process</h3>
     <StyledText>
