@@ -90,7 +90,7 @@ const ViewPaperLink = styled.a`
 export const Home: FC = () => {
   useEffect(() => {
     ReactGA.initialize("UA-154621985-1");
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    // ReactGA.pageview(window.location.pathname + window.location.search);
   }, []);
 
   return (
