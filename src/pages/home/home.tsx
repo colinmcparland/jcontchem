@@ -11,10 +11,6 @@ import {
 import { blue } from "../../css/snippets/colors";
 import { HomeForm } from "./home-form";
 import { Helmet } from "react-helmet";
-import ReactGA from "react-ga";
-
-ReactGA.initialize("UA-154621985-1");
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 const HomeContainer = styled.div`
   display: grid;
