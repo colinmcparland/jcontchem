@@ -126,7 +126,7 @@ export const HomeForm: FC = () => (
       }}
       onSubmit={async (values, { setSubmitting, setStatus }): Promise<void> => {
         try {
-          await fetch("http://jcontchem.com:5000/mail", {
+          await fetch("https://jcontchem.com:5000/mail", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
