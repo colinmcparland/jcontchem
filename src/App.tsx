@@ -7,10 +7,6 @@ import { Header } from "./common/header/header";
 import styled from "styled-components";
 import { Footer } from "./common/footer/footer";
 import { Contribute } from "./pages/contribute/contribute";
-import ReactGA from "react-ga";
-
-ReactGA.initialize("UA-154621985-1");
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 const PageContent = styled.div`
   max-width: 1280px;
