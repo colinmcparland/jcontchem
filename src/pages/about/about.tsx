@@ -2,6 +2,10 @@ import React, { FC } from "react";
 import { montserratLight } from "../../css/snippets/fonts";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
+import ReactGA from "react-ga";
+
+ReactGA.initialize("UA-154621985-1");
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const StyledText = styled.p`
   ${montserratLight}

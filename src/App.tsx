@@ -7,7 +7,6 @@ import { Header } from "./common/header/header";
 import styled from "styled-components";
 import { Footer } from "./common/footer/footer";
 import { Contribute } from "./pages/contribute/contribute";
-import { Helmet } from "react-helmet";
 
 const PageContent = styled.div`
   max-width: 1280px;
@@ -29,19 +28,6 @@ const PageContent = styled.div`
 const App: FC = () => (
   <div>
     <Router history={createBrowserHistory()}>
-      <Helmet>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=UA-154621985-1"
-        ></script>
-        <script>
-          {`window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-154621985-1');`}
-        </script>
-      </Helmet>
       <Header
         pageTitle={
           window.location.pathname === "/"
