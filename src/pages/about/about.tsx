@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { montserratLight } from "../../css/snippets/fonts";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
